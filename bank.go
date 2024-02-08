@@ -20,40 +20,43 @@ func main() {
 
 		fmt.Println("Your choice is: ",choice)
 
-		if choice == 1 {
-			fmt.Println("Your balance is:",accountBalance)
-		} else if choice == 2 {
-			fmt.Print("Your deposit: ")
-			var depositAmount float64
-			fmt.Scan(&depositAmount)
+		switch choice {
+			case 1:
+				fmt.Println("Your balance is:",accountBalance)
+			case 2:
+				fmt.Print("Your deposit: ")
+				var depositAmount float64
+				fmt.Scan(&depositAmount)
 
-			if depositAmount <= 0 {
-				fmt.Println("Invalid amount. Must be greathre than 0")
-				continue
-			}
-			accountBalance += depositAmount
-			fmt.Println("Balance updated! New amount: ",accountBalance)
-		} else if choice == 3{
-			fmt.Print("Enter amount to withdraw: ")
-			var withrawalAmount float64
-			fmt.Scan(&withrawalAmount)
+				if depositAmount <= 0 {
+					fmt.Println("Invalid amount. Must be greathre than 0")
+					continue
+				}
+				accountBalance += depositAmount
+				fmt.Println("Balance updated! New amount: ",accountBalance)
+			case 3:
+				fmt.Print("Enter amount to withdraw: ")
+				var withrawalAmount float64
+				fmt.Scan(&withrawalAmount)
 
-			if withrawalAmount <= 0 {
-				fmt.Println("Invalid amount. Must be greater than 0")
-				return
-			}
-			
-			if withrawalAmount > accountBalance {
-				fmt.Println("Invalid amount. You can't withdraw more than you have")
-				return
-			}
+				if withrawalAmount <= 0 {
+					fmt.Println("Invalid amount. Must be greater than 0")
+					continue
+				}
+				
+				if withrawalAmount > accountBalance {
+					fmt.Println("Invalid amount. You can't withdraw more than you have")
+					continue
+				}
 
-			accountBalance -= withrawalAmount
-			fmt.Println("Balance updated! new amount: ",accountBalance)
-		} else {
-			fmt.Println("Goodbye!")
-			break;
+				accountBalance -= withrawalAmount
+				fmt.Println("Balance updated! new amount: ",accountBalance)
+			default:
+				fmt.Println("Goodbye!")
+				fmt.Println("Thanks for choosing our bank")
+				return 
 		}
+
 	}
 
 	fmt.Println("Thanks for choosing our bank")
